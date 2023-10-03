@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Purchase Page</title>
+    <link rel="stylesheet" href="productPage.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.js"></script>
+    <script src="productPage2.js"></script>
+</head>
+
+<body ng-app="App">
+    <main ng-controller="appController">
+        <div class="container">
+            <div class="navbar">
+                <div class="navbar-logo">RandomCoice Fashion</div>
+                <ul class="navbar-menu">
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Products</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+                <div class="navbar-cart">
+                    <img src="cart.png" alt="cart" width="32" height="32">
+                    <span ng-repeat="row in product">{{ row.quant }}</span>
+                </div>
+            </div>
+
+            <div class="product-info">
+                <div class="product-image">
+                    <img src="product2.avif" alt="product image" style="margin-right: 5px;">
+                    <img src="product2.1.avif" alt="product image">
+                </div>
+                <div class="product-name">
+                    MEN NAVY STRIPE CREW NECK SWEATER
+                </div>
+                <div class="product-price">
+                    <p class="mrp">MRP</p>
+                    <div class="cancelled">
+                        <s>₹ 1,999</s>
+                    </div>
+                    <div class="cp">
+                        ₹ 1,719.14
+                    </div>
+                    <div class="discount"> 
+                        14% OFF
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-purchase">
+                <p style="font-weight: bold;">Select Quantity of Product -></p>
+                <input type="number" value="0" min="0" ng-model="quant" placeholder="Quantity" id="quant">
+                <button type="submit" ng-click="total()">Add to Cart</button>
+            </div>
+
+            <div class="shopping-cart">
+                <h2>Shopping Cart</h2>
+
+                <table class="shopping-cart-table">
+
+                    <tr>
+                        <th>Product</th>
+                        <th>Quantity</th>
+                        <th>Price</th>
+                    </tr>
+
+
+                    <tr ng-repeat="row in product">
+                        <td>
+                            MEN NAVY STRIPE CREW NECK SWEATER (applied 14% discount)</td>
+                        <td>{{ row.quant }}</td>
+                        <td>₹ {{ row.newPrice }}</td>
+                    </tr>
+
+                </table>
+
+                <div class="shopping-cart-total" ng-repeat="row in product">
+                    <h3>Total: {{ row.newPrice }}</h3>
+                </div>
+
+
+                <div class="shopping-cart-checkout">
+                    <button type="submit">Checkout</button>
+                </div>
+            </div>
+    </main>
+</body>
+
+</html>
